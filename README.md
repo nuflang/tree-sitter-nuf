@@ -21,6 +21,4 @@ parser_config.nuf = {
 }
 ```
 
-3. Install `nuf`
-
-`:TSInstall nuf`
+3. `:TSInstall nuf` 
