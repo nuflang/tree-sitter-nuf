@@ -23,4 +23,4 @@ parser_config.nuf = {
 
 3. Install `nuf`
 
-`TSInstall nuf`
+`:TSInstall nuf`
