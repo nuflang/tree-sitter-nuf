@@ -1,0 +1,102 @@
+{
+  "name": "nuf",
+  "word": "identifier",
+  "rules": {
+    "block": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "landmark"
+      }
+    },
+    "landmark_prefix": {
+      "type": "STRING",
+      "value": ">"
+    },
+    "landmark_keyword": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "banner"
+        },
+        {
+          "type": "STRING",
+          "value": "header"
+        },
+        {
+          "type": "STRING",
+          "value": "complementary"
+        },
+        {
+          "type": "STRING",
+          "value": "aside"
+        },
+        {
+          "type": "STRING",
+          "value": "contentinfo"
+        },
+        {
+          "type": "STRING",
+          "value": "footer"
+        },
+        {
+          "type": "STRING",
+          "value": "form"
+        },
+        {
+          "type": "STRING",
+          "value": "main"
+        },
+        {
+          "type": "STRING",
+          "value": "navigation"
+        },
+        {
+          "type": "STRING",
+          "value": "nav"
+        },
+        {
+          "type": "STRING",
+          "value": "region"
+        },
+        {
+          "type": "STRING",
+          "value": "section"
+        },
+        {
+          "type": "STRING",
+          "value": "search"
+        }
+      ]
+    },
+    "landmark": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "landmark_prefix"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "landmark_keyword"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-z]+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}

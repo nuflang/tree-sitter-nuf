@@ -1,0 +1,97 @@
+[
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "landmark",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "landmark",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "landmark_keyword",
+          "named": true
+        },
+        {
+          "type": "landmark_prefix",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "landmark_keyword",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "aside",
+    "named": false
+  },
+  {
+    "type": "banner",
+    "named": false
+  },
+  {
+    "type": "complementary",
+    "named": false
+  },
+  {
+    "type": "contentinfo",
+    "named": false
+  },
+  {
+    "type": "footer",
+    "named": false
+  },
+  {
+    "type": "form",
+    "named": false
+  },
+  {
+    "type": "header",
+    "named": false
+  },
+  {
+    "type": "landmark_prefix",
+    "named": true
+  },
+  {
+    "type": "main",
+    "named": false
+  },
+  {
+    "type": "nav",
+    "named": false
+  },
+  {
+    "type": "navigation",
+    "named": false
+  },
+  {
+    "type": "region",
+    "named": false
+  },
+  {
+    "type": "search",
+    "named": false
+  },
+  {
+    "type": "section",
+    "named": false
+  }
+]
