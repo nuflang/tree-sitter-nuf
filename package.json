@@ -41,6 +41,7 @@
   "tree-sitter": [
     {
       "scope": "source.nuf",
+      "file-types": ["nuf"],
       "injection-regex": "^nuf$"
     }
   ]

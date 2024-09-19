@@ -5,7 +5,11 @@ module.exports = grammar({
   name: 'nuf',
 
   rules: {
-    block: $ => repeat(seq($.function_call, $.delimiter)),
+    block: $ => repeat($.statement),
+
+    statement: $ => seq($.expression, $.delimiter),
+
+    expression: $ => choice($.function_call, $.string),
 
     delimiter: _ => choice(';'),
 
@@ -13,12 +17,7 @@ module.exports = grammar({
 
     string: _ => seq('"', /[a-zA-Z0-9_ ]*/, '"'),
 
-    function_call: $ => seq(
-      $.identifier,
-      $.bracket,
-      $.string,
-      $.bracket,
-    ),
+    function_call: $ => seq($.identifier, $.bracket, $.string, $.bracket),
 
     identifier: _ => /[a-z_]+/,
   }
