@@ -21,4 +21,26 @@ parser_config.nuf = {
 }
 ```
 
-3. `:TSInstall nuf` 
+3. Add `nuf` query in `/queries/nuf/hightlights.scm`
+
+```scm
+(statement
+    (expression
+        (function_call
+            (identifier) @function
+            (bracket) @punctuation.bracket
+            (string) @string
+        )
+    )
+    (delimiter) @punctuation.delimiter
+)
+
+(statement
+    (expression
+        (string) @string
+    )
+    (delimiter) @punctuation.delimiter
+)
+```
+
+4. `:TSInstall nuf` 

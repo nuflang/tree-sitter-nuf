@@ -8,14 +8,43 @@
       "required": false,
       "types": [
         {
-          "type": "landmark",
+          "type": "statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "landmark",
+    "type": "bracket",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "delimiter",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_call",
     "named": true,
     "fields": {},
     "children": {
@@ -23,75 +52,62 @@
       "required": true,
       "types": [
         {
-          "type": "landmark_keyword",
+          "type": "bracket",
           "named": true
         },
         {
-          "type": "landmark_prefix",
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "landmark_keyword",
+    "type": "statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "delimiter",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
     "named": true,
     "fields": {}
   },
   {
-    "type": "aside",
+    "type": "\"",
     "named": false
   },
   {
-    "type": "banner",
+    "type": "(",
     "named": false
   },
   {
-    "type": "complementary",
+    "type": ")",
     "named": false
   },
   {
-    "type": "contentinfo",
+    "type": ";",
     "named": false
   },
   {
-    "type": "footer",
-    "named": false
-  },
-  {
-    "type": "form",
-    "named": false
-  },
-  {
-    "type": "header",
-    "named": false
-  },
-  {
-    "type": "landmark_prefix",
+    "type": "identifier",
     "named": true
-  },
-  {
-    "type": "main",
-    "named": false
-  },
-  {
-    "type": "nav",
-    "named": false
-  },
-  {
-    "type": "navigation",
-    "named": false
-  },
-  {
-    "type": "region",
-    "named": false
-  },
-  {
-    "type": "search",
-    "named": false
-  },
-  {
-    "type": "section",
-    "named": false
   }
 ]

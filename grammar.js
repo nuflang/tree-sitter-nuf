@@ -4,35 +4,22 @@
 module.exports = grammar({
   name: 'nuf',
 
-  word: $ => $.identifier,
-
   rules: {
-    block: $ => repeat($.landmark),
+    block: $ => repeat($.statement),
 
-    landmark_prefix: _ => '>',
+    statement: $ => seq($.expression, $.delimiter),
 
-    landmark_keyword: _ => choice(
-      'banner',
-      'header',
-      'complementary',
-      'aside',
-      'contentinfo',
-      'footer',
-      'form',
-      'main',
-      'navigation',
-      'nav',
-      'region',
-      'section',
-      'search',
-    ),
+    expression: $ => choice($.function_call, $.string),
 
-    landmark: $ => seq(
-      $.landmark_prefix,
-      $.landmark_keyword,
-    ),
+    delimiter: _ => choice(';'),
 
-    identifier: _ => /[a-z]+/,
+    bracket: _ => choice('(', ')'),
+
+    string: _ => seq('"', /[a-zA-Z0-9_ ]*/, '"'),
+
+    function_call: $ => seq($.identifier, $.bracket, $.string, $.bracket),
+
+    identifier: _ => /[a-z_]+/,
   }
 });
 
