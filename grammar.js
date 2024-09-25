@@ -4,12 +4,24 @@
 module.exports = grammar({
   name: 'nuf',
 
+  word: $ => $.identifier,
+
   rules: {
-    block: $ => repeat($.statement),
+    source_file: $ => repeat($._statement),
 
-    statement: $ => seq($.expression, $.delimiter),
+    _statement: $ => seq($._expression, $.delimiter),
 
-    expression: $ => choice($.function_call, $.string),
+    _expression: $ => choice(
+      $.custom_name,
+      $.identifier,
+      $.function_call,
+      $.string,
+      $.binary_expression,
+    ),
+
+    binary_expression: $ => choice(
+      prec.left(1, seq($._expression, 'inside', $._expression))
+    ),
 
     delimiter: _ => choice(';'),
 
@@ -18,6 +30,8 @@ module.exports = grammar({
     string: _ => seq('"', /[a-zA-Z0-9_ ]*/, '"'),
 
     function_call: $ => seq($.identifier, $.bracket, $.string, $.bracket),
+
+    custom_name: _ => seq('--', /[a-zA-Z0-9_]+/),
 
     identifier: _ => /[a-z_]+/,
   }
