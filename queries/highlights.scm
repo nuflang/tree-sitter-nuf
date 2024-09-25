@@ -1,17 +1,6 @@
-(statement
-    (expression
-        (function_call
-            (identifier) @function
-            (bracket) @punctuation.bracket
-            (string) @string
-        )
-    )
-    (delimiter) @punctuation.delimiter
-)
-
-(statement
-    (expression
-        (string) @string
-    )
-    (delimiter) @punctuation.delimiter
-)
+(function_call (identifier) @function.builtin)
+(bracket) @punctuation.bracket
+(string) @string
+(delimiter) @punctuation.delimiter
+("inside") @keyword
+(custom_name) @variable
