@@ -23,13 +23,17 @@ module.exports = grammar({
       prec.left(1, seq($._expression, 'inside', $._expression))
     ),
 
-    delimiter: _ => choice(';'),
+    delimiter: _ => choice(';', ',', ':'),
 
-    bracket: _ => choice('(', ')'),
+    bracket: _ => choice('(', ')', '{', '}'),
 
     string: _ => seq('"', /[a-zA-Z0-9_ ]*/, '"'),
 
-    function_call: $ => seq($.identifier, $.bracket, $.string, $.bracket),
+    hash_block: $ => seq($.bracket, $.string, $.delimiter, $.string, $.delimiter, $.bracket),
+
+    function_call: $ => seq($.identifier, $.bracket, repeat($._function_call_argument), $.bracket),
+
+    _function_call_argument: $ => choice($.string, $.hash_block, $.delimiter),
 
     custom_name: _ => seq('--', /[a-zA-Z0-9_]+/),
 
