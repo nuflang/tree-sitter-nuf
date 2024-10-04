@@ -58,7 +58,38 @@
           "named": true
         },
         {
+          "type": "delimiter",
+          "named": true
+        },
+        {
+          "type": "hash_block",
+          "named": true
+        },
+        {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hash_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bracket",
+          "named": true
+        },
+        {
+          "type": "delimiter",
           "named": true
         },
         {
@@ -121,7 +152,15 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "--",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -134,6 +173,14 @@
   },
   {
     "type": "inside",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
     "named": false
   }
 ]
