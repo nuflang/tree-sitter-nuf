@@ -9,7 +9,10 @@ module.exports = grammar({
   rules: {
     source_file: $ => repeat($._statement),
 
-    _statement: $ => seq($._expression, $.delimiter),
+    _statement: $ => seq(
+      $._expression,
+      $.delimiter
+    ),
 
     _expression: $ => choice(
       $.custom_name,
@@ -20,7 +23,14 @@ module.exports = grammar({
     ),
 
     binary_expression: $ => choice(
-      prec.left(1, seq($._expression, 'inside', $._expression))
+      prec.left(
+        1,
+        seq(
+          $._expression,
+          'inside',
+          $._expression
+        )
+      )
     ),
 
     delimiter: _ => choice(';', ',', ':'),
@@ -29,11 +39,37 @@ module.exports = grammar({
 
     string: _ => seq('"', /[a-zA-Z0-9_ ]*/, '"'),
 
-    hash_block: $ => seq($.bracket, $.string, $.delimiter, $.string, $.delimiter, $.bracket),
+    hash_block: $ => seq(
+      $.bracket,
+      repeat($.hash_pair),
+      $.bracket
+    ),
 
-    function_call: $ => seq($.identifier, $.bracket, repeat($._function_call_argument), $.bracket),
+    hash_pair: $ => seq(
+      $.string,
+      $.delimiter,
+      $.string,
+      optional($.delimiter)
+    ),
 
-    _function_call_argument: $ => choice($.string, $.hash_block, $.delimiter),
+    function_call: $ => seq(
+      $.identifier,
+      $.bracket,
+      optional(
+        repeat(
+          seq(
+            $._function_call_argument,
+            optional($.delimiter)
+          )
+        )
+      ),
+      $.bracket
+    ),
+
+    _function_call_argument: $ => choice(
+      $.string,
+      $.hash_block
+    ),
 
     custom_name: _ => seq('--', /[a-zA-Z0-9_]+/),
 
